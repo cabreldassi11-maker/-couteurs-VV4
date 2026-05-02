@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VV4 Air Conduction | Écoutez le monde, restez libre — Nekudu Shop</title>
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1483965650036220');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1483965650036220&ev=PageView&noscript=1"/></noscript>
+
+<style>
+/* ════════ RESET & BASE ════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#111;font-size:15px;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ════════ TOKENS ════════ */
+:root{
+  --red:#E62B2B; --red-dk:#C42020; --orange:#FF6B1A;
+  --dark:#111; --mid:#333; --soft:#666;
+  --light:#F5F5F5; --border:#E0E0E0;
+  --green:#1A8C45; --wa:#25D366; --star:#FFC107;
+  --radius:4px;
+}
+
+/* ════════ TOPBAR ════════ */
+.topbar{background:var(--dark);color:#fff;text-align:center;font-size:12px;padding:8px 16px;letter-spacing:.05em;}
+.topbar strong{color:var(--orange);}
+
+/* ════════ HEADER ════════ */
+.site-header{background:#fff;border-bottom:2px solid var(--dark);padding:12px 20px;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:200;gap:16px;}
+.logo-zone{display:flex;align-items:center;gap:12px;}
+.logo-img-box{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+.logo-img-box img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.logo-name{font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--dark);}
+.logo-name span{color:var(--red);}
+.header-cta{display:none;background:var(--red);color:#fff;padding:9px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;}
+@media(min-width:600px){.header-cta{display:block;} .site-header{justify-content:space-between;}}
+
+/* ════════ HERO ════════ */
+.hero{background:var(--light);padding:0;}
+.hero-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
+@media(max-width:680px){.hero-inner{grid-template-columns:1fr;}}
+
+.hero-gallery{padding:20px;}
+.hero-main-img{width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:8px;background:#fff;border:1px solid var(--border);margin-bottom:10px;}
+.hero-main-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.hero-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.hero-thumb{aspect-ratio:1/1;overflow:hidden;border-radius:6px;border:2px solid transparent;cursor:pointer;background:#fff;transition:border-color .2s;}
+.hero-thumb.active{border-color:var(--red);}
+.hero-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;}
+
+.hero-info{padding:24px 20px;background:#fff;}
+.product-label{display:inline-block;background:var(--orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:10px;}
+.product-title{font-size:clamp(20px,4vw,28px);font-weight:800;line-height:1.2;color:var(--dark);margin-bottom:8px;}
+.product-title span{color:var(--red);}
+.stars-row{display:flex;align-items:center;gap:6px;margin-bottom:14px;}
+.stars{color:var(--star);font-size:15px;letter-spacing:1px;}
+.stars-count{font-size:13px;color:var(--soft);}
+.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
+.price-new{font-size:36px;font-weight:800;color:var(--red);letter-spacing:-1px;}
+.price-old{font-size:18px;color:#aaa;text-decoration:line-through;}
+.price-save{font-size:13px;color:#fff;background:var(--green);padding:2px 8px;border-radius:2px;font-weight:700;}
+.delivery-note{font-size:12px;color:var(--green);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:5px;}
+.stock-bar{background:var(--light);border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;font-size:13px;display:flex;align-items:center;gap:8px;}
+.stock-dot{width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;animation:blink 1.2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.stock-count{color:var(--red);font-weight:700;}
+
+.mini-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.mini-spec{background:var(--light);border-radius:6px;padding:10px 12px;text-align:center;}
+.ms-val{font-size:16px;font-weight:800;color:var(--dark);}
+.ms-key{font-size:11px;color:var(--soft);margin-top:2px;}
+
+.cta-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--wa);color:#fff;border:none;padding:16px;font-size:15px;font-weight:700;border-radius:var(--radius);cursor:pointer;font-family:inherit;letter-spacing:.02em;transition:opacity .2s;margin-bottom:10px;}
+.cta-wa:hover{opacity:.9;}
+.trust-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+.badge{text-align:center;font-size:11px;color:var(--soft);line-height:1.4;}
+.badge-icon{font-size:20px;margin-bottom:4px;}
+
+/* ════════ QUICK ORDER ════════ */
+.quick-order{background:var(--dark);padding:28px 20px;}
+.quick-inner{max-width:680px;margin:0 auto;}
+.quick-title{color:#fff;font-size:18px;font-weight:800;text-align:center;margin-bottom:4px;}
+.quick-sub{color:rgba(255,255,255,.5);font-size:13px;text-align:center;margin-bottom:20px;}
+
+.offer-grid-h{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.offer-btn{border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);border-radius:8px;padding:14px 10px;cursor:pointer;text-align:center;font-family:inherit;transition:border-color .2s,background .2s;color:#fff;}
+.offer-btn.active{border-color:var(--wa);background:rgba(37,211,102,.1);}
+.ob-label{font-size:12px;color:rgba(255,255,255,.6);display:block;margin-bottom:3px;}
+.ob-price{font-size:22px;font-weight:800;color:var(--wa);display:block;}
+.ob-save{font-size:11px;color:rgba(255,255,255,.5);display:block;margin-top:2px;}
+.offer-btn.active .ob-save{color:var(--wa);}
+
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+@media(max-width:480px){.fields-row{grid-template-columns:1fr;}}
+.qfield input,.qfield select{width:100%;border:2px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:13px 14px;font-size:14px;font-family:inherit;color:#fff;background:rgba(255,255,255,.07);outline:none;transition:border-color .2s;appearance:none;}
+.qfield input::placeholder{color:rgba(255,255,255,.35);}
+.qfield input:focus,.qfield select:focus{border-color:var(--wa);}
+.qfield select{color:rgba(255,255,255,.7);}
+.qfield select option{color:#111;background:#fff;}
+
+.form-cta-big{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--wa);color:#fff;border:none;padding:18px;font-size:16px;font-weight:800;border-radius:var(--radius);cursor:pointer;font-family:inherit;transition:opacity .2s;margin-top:12px;letter-spacing:.02em;}
+.form-cta-big:hover{opacity:.9;}
+.form-reassure{text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.5;}
+
+.confirm-box{display:none;text-align:center;padding:40px 16px;}
+.confirm-box.show{display:block;}
+.confirm-icon{font-size:48px;margin-bottom:14px;}
+.confirm-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px;}
+.confirm-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;}
+.reset-btn{margin-top:18px;background:none;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:9px 20px;font-size:13px;font-family:inherit;cursor:pointer;color:rgba(255,255,255,.6);}
+
+/* ════════ DIVIDER ════════ */
+.divider{height:4px;background:linear-gradient(90deg,var(--red),var(--orange));}
+
+/* ════════ SECTIONS ════════ */
+.section{padding:56px 20px;max-width:960px;margin:0 auto;}
+.section-wide{padding:56px 20px;max-width:960px;margin:0 auto;}
+.section-bg{background:var(--light);}
+.section-dark{background:var(--dark);color:#fff;}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:2px;margin-bottom:12px;}
+.section-dark .section-tag{color:var(--orange);border-color:var(--orange);}
+.section-h2{font-size:clamp(22px,4.5vw,34px);font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:10px;}
+.section-dark .section-h2{color:#fff;}
+.section-h2 em{font-style:normal;color:var(--red);}
+.section-dark .section-h2 em{color:var(--orange);}
+.section-sub{font-size:15px;color:var(--soft);max-width:560px;margin-bottom:36px;line-height:1.7;}
+.section-dark .section-sub{color:rgba(255,255,255,.55);}
+
+/* ════════ FRAMES ════════ */
+.frame-169{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:var(--dark);}
+.frame-169 img,.frame-169 video{width:100%;height:100%;object-fit:cover;}
+.frame-43{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:var(--light);}
+.frame-43 img{width:100%;height:100%;object-fit:cover;}
+.frame-caption{font-size:12px;color:var(--soft);text-align:center;margin-top:8px;}
+
+/* ════════ VIDEO SECTION ════════ */
+.video-section{background:var(--dark);padding:0;}
+.video-inner{max-width:960px;margin:0 auto;padding:48px 20px;}
+
+/* ════════ MEDIA GRID ════════ */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.media-grid .span-full{grid-column:1/-1;}
+@media(max-width:540px){.media-grid{grid-template-columns:1fr;} .span-full{grid-column:1;}}
+
+/* ════════ SPLIT ════════ */
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.split-grid.reverse{direction:rtl;}
+.split-grid.reverse>*{direction:ltr;}
+@media(max-width:640px){.split-grid,.split-grid.reverse{grid-template-columns:1fr;direction:ltr;}}
+.split-text h3{font-size:clamp(20px,3.5vw,28px);font-weight:800;line-height:1.2;margin-bottom:12px;color:var(--dark);}
+.section-dark .split-text h3{color:#fff;}
+.split-text p{font-size:14px;color:var(--soft);line-height:1.75;margin-bottom:14px;}
+.check-list{list-style:none;}
+.check-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--mid);margin-bottom:8px;}
+.check-list li::before{content:'✓';color:var(--green);font-weight:800;}
+
+/* ════════ FEAT CARDS ════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.feat-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:22px 18px;}
+.feat-card-icon{font-size:28px;margin-bottom:10px;}
+.feat-card-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.feat-card-desc{font-size:13px;color:var(--soft);line-height:1.6;}
+
+/* ════════ BOX GRID ════════ */
+.box-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:28px;}
+.box-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 12px;text-align:center;}
+.box-icon{font-size:28px;margin-bottom:8px;}
+.box-name{font-size:13px;font-weight:700;color:var(--dark);}
+
+/* ════════ SPECS TABLE ════════ */
+.specs-table{width:100%;border-collapse:collapse;}
+.specs-table tr{border-bottom:1px solid var(--border);}
+.specs-table td{padding:12px 6px;font-size:14px;}
+.specs-table td:first-child{color:var(--soft);width:50%;}
+.specs-table td:last-child{color:var(--dark);font-weight:600;text-align:right;}
+
+/* ════════ REVIEWS ════════ */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.review-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;}
+.review-stars{color:var(--star);font-size:14px;margin-bottom:8px;}
+.review-text{font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:14px;font-style:italic;}
+.review-author{display:flex;align-items:center;gap:10px;}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-weight:700;}
+
+/* ════════ GUARANTEE ════════ */
+.guarantee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+.guarantee-card{text-align:center;padding:24px 14px;border:1px solid rgba(255,255,255,.12);border-radius:8px;}
+.g-icon{font-size:30px;margin-bottom:10px;}
+
+/* ════════ FAQ ════════ */
+.faq-wrap{max-width:680px;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:600;cursor:pointer;}
+.faq-plus{color:var(--red);font-size:22px;transition:transform .25s;}
+.faq-a{font-size:14px;color:var(--soft);max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:16px;}
+.faq-item.open .faq-plus{transform:rotate(45deg);}
+
+/* ════════ FOOTER ════════ */
+footer{background:var(--dark);color:rgba(255,255,255,.45);padding:36px 20px;text-align:center;font-size:13px;}
+footer .footer-logo{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;}
+footer .footer-logo span{color:var(--orange);}
+
+/* ════════ STICKY BOTTOM ════════ */
+.sticky-bottom{position:fixed;bottom:0;left:0;right:0;background:var(--dark);border-top:2px solid var(--wa);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;z-index:300;}
+.sticky-product{display:flex;align-items:center;gap:10px;}
+.sticky-thumb{width:40px;height:40px;border-radius:4px;overflow:hidden;}
+.sticky-name{font-size:13px;color:#fff;font-weight:700;}
+.sticky-price{font-size:12px;color:var(--wa);}
+.sticky-cta{background:var(--wa);color:#fff;border:none;padding:10px 18px;font-size:13px;font-weight:800;border-radius:var(--radius);cursor:pointer;}
+</style>
+<!-- ══ FACEBOOK PIXEL ══ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1483965650036220');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1483965650036220&ev=PageView&noscript=1"/></noscript>
+    </head>
+<body>
+    </body>
+</html>
+</head>
+<body>
+
+<div class="topbar">🚚 <strong>Livraison GRATUITE</strong> à Lubumbashi & Kolwezi &nbsp;·&nbsp; 💵 Paiement à la réception</div>
+
+<header class="site-header">
+  <div class="logo-zone">
+    <div class="logo-img-box">
+      <img src="201955.jpg" alt="Logo Nekudu Shop">
+    </div>
+    <div class="logo-name">Nekudu<span>.</span>Shop</div>
+  </div>
+  <button class="header-cta" onclick="focusForm()">Commander — 29$</button>
+</header>
+
+<div class="divider"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-gallery">
+      <div class="hero-main-img">
+        <img src="1776329242752.png" alt="Ecouteurs VV4 Air Conduction" id="main-img-el">
+      </div>
+      <div class="hero-thumbs">
+        <div class="hero-thumb active" onclick="switchImg(this,'1776329242752.png')"><img src="1776329242752.png"></div>
+        <div class="hero-thumb" onclick="switchImg(this,'1776329230843.png')"><img src="1776329230843.png"></div>
+        <div class="hero-thumb" onclick="switchImg(this,'1776329245789.png')"><img src="1776329245789.png"></div>
+        <div class="hero-thumb" onclick="switchImg(this,'1776329248743.png')"><img src="1776329248743.png"></div>
+      </div>
+    </div>
+
+    <div class="hero-info">
+      <span class="product-label">🔥 Conduction Aérienne · Bluetooth 5.3</span>
+      <h1 class="product-title">VV4 Air <span>Conduction</span><br>Le son sans douleur</h1>
+      <div class="stars-row">
+        <span class="stars">★★★★★</span>
+        <span class="stars-count">4,9/5 — 142 avis</span>
+      </div>
+      <div class="price-row">
+        <span class="price-new">29$</span>
+        <span class="price-old">50$</span>
+        <span class="price-save">-30%</span>
+      </div>
+      <div class="delivery-note">✓ Livraison gratuite · Hygiénique · Garantie 6 mois</div>
+
+      <div class="stock-bar">
+        <span class="stock-dot"></span>
+        <span>Stock limité — <span class="stock-count">7 unités restantes</span></span>
+      </div>
+
+      <div class="mini-specs">
+        <div class="mini-spec"><div class="ms-val">8 Heures</div><div class="ms-key">Batterie</div></div>
+        <div class="mini-spec"><div class="ms-val">BT 5.3</div><div class="ms-key">Connexion</div></div>
+        <div class="mini-spec"><div class="ms-val">IPX5</div><div class="ms-key">Étanche</div></div>
+        <div class="mini-spec"><div class="ms-val">26g</div><div class="ms-key">Ultra-Léger</div></div>
+      </div>
+
+      <button class="cta-wa" onclick="ctaWaClick('hero')">
+        COMMANDER MAINTENANT — 29$
+      </button>
+
+      <div class="trust-badges">
+        <div class="badge"><div class="badge-icon">👂</div>Zéro douleur</div>
+        <div class="badge"><div class="badge-icon">💵</div>Paiement cash</div>
+        <div class="badge"><div class="badge-icon">🏃</div>Idéal sport</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="quick-order" id="commander">
+  <div class="quick-inner">
+    <div id="quick-form">
+      <div class="quick-title">🛒 Valider ma commande</div>
+      <p class="quick-sub">Livraison express en moins de 4h</p>
+
+      <div class="offer-grid-h">
+        <button class="offer-btn active" onclick="selectOffer(this,1,'29$')">
+          <span class="ob-label">🎧 1 Paire VV4</span>
+          <span class="ob-price">29$</span>
+          <span class="ob-save">Paiement à réception</span>
+        </button>
+        <button class="offer-btn" onclick="selectOffer(this,2,'50$')">
+          <span class="ob-label">🎧🎧 2 Paires VV4</span>
+          <span class="ob-price">50$</span>
+          <span class="ob-save">🔥 Économise 10$</span>
+        </button>
+      </div>
+
+      <div class="fields-row">
+        <div class="qfield"><input type="text" id="f-nom" placeholder="👤 Nom *"></div>
+        <div class="qfield"><input type="tel" id="f-phone" placeholder="📞 téléphone*"></div>
+      </div>
+      <div class="fields-row">
+        <div class="qfield">
+          <select id="f-ville">
+            <option value="">📍 Ville *</option>
+            <option value="Lubumbashi">Lubumbashi</option>
+            <option value="Kolwezi">Kolwezi</option>
+          </select>
+        </div>
+        <div class="qfield"><input type="text" id="f-note" placeholder="🏠 Quartier / Rue"></div>
+      </div>
+
+      <button class="form-cta-big" onclick="sendOrder()">ENVOYER MA COMMANDE SUR WHATSAPP →</button>
+    </div>
+
+    <div class="confirm-box" id="confirm-box">
+      <div class="confirm-icon">✅</div>
+      <div class="confirm-title">Commande reçue !</div>
+      <p class="confirm-text">Cliquez sur <strong>Envoyer</strong> dans l'application WhatsApp qui vient de s'ouvrir.</p>
+      <button class="reset-btn" onclick="resetForm()">Passer une autre commande</button>
+    </div>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="video-inner">
+    <div class="section-tag">Démonstration</div>
+    <h2 class="section-h2" style="color:#fff;">La révolution de la<br><em style="color:var(--orange);">Conduction Aérienne</em></h2>
+    <div class="frame-169">
+      <video src="203956.mp4" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+</section>
+
+<section class="section-bg">
+  <div class="section">
+    <div class="section-tag">Photos réelles</div>
+    <h2 class="section-h2">Le futur de<br><em>votre écoute</em></h2>
+    <div class="media-grid" style="margin-top:28px;">
+      <div class="span-full">
+        <div class="frame-169"><img src="image2.jpg"></div>
+        <p class="frame-caption">Oubliez les bouchons : le son flotte devant vos oreilles</p>
+      </div>
+      <div>
+        <div class="frame-43"><img src="image3.jpg"></div>
+        <p class="frame-caption">Confort 24h : idéal pour le bureau</p>
+      </div>
+      <div>
+        <div class="frame-43"><img src="1776329234777.png"></div>
+        <p class="frame-caption">Structure flexible incassable</p>
+      </div>
+      <div class="span-full">
+        <div class="frame-169"><img src="image4.jpg"></div>
+        <p class="frame-caption">Restez attentif au trafic pendant votre jogging</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section">
+    <div class="section-tag">Dans le pack</div>
+    <h2 class="section-h2">Tout ce qu'il vous faut<br><em>pour commencer</em></h2>
+    <div class="box-grid">
+      <div class="box-item"><div class="box-icon">🎧</div><div class="box-name">Casque VV4</div></div>
+      <div class="box-item"><div class="box-icon">🔌</div><div class="box-name">Câble de Charge</div></div>
+      <div class="box-item"><div class="box-icon">📖</div><div class="box-name">Manuel FR</div></div>
+      <div class="box-item"><div class="box-icon">🛡️</div><div class="box-name">Garantie 6 mois</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-bg">
+  <div class="section">
+    <div class="section-tag">Performance</div>
+    <h2 class="section-h2">Protection de l'ouïe —<br><em>zéro infection</em></h2>
+    <div class="split-grid" style="margin-top:32px;">
+      <div><div class="frame-43"><img src="image5.jpg"></div></div>
+      <div class="split-text">
+        <h3>Pourquoi la conduction aérienne ?</h3>
+        <p>Les écouteurs classiques poussent les bactéries et augmentent la pression sonore. Les VV4 éliminent ce risque.</p>
+        <ul class="check-list">
+          <li>Pas d'insertion : vos oreilles respirent</li>
+          <li>Évite les otites et les irritations</li>
+          <li>Idéal pour les sportifs qui transpirent</li>
+          <li>Bluetooth 5.3 : Connexion stable à 10m</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-bg">
+  <div class="section-wide">
+    <div class="section-tag">Pourquoi choisir</div>
+    <h2 class="section-h2">6 raisons de passer<br><em>au VV4 Air</em></h2>
+    <div class="feat-grid" style="margin-top:28px;">
+      <div class="feat-card">
+        <div class="feat-card-icon">🦶</div>
+        <div class="feat-card-title">Léger comme une plume</div>
+        <div class="feat-card-desc">Seulement 26g. On oublie qu'on les porte après 2 minutes.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">🚴</div>
+        <div class="feat-card-title">Sécurité routière</div>
+        <div class="feat-card-desc">Entendez les voitures approcher pendant votre vélo ou course.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">💧</div>
+        <div class="feat-card-title">Résistant IPX5</div>
+        <div class="feat-card-desc">Pluie fine, sueur intense... Ils sont faits pour durer.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">🔋</div>
+        <div class="feat-card-title">Autonomie boostée</div>
+        <div class="feat-card-desc">8h de musique non-stop. Charge rapide en 1h30.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">📞</div>
+        <div class="feat-card-title">Appels Cristallins</div>
+        <div class="feat-card-desc">Microphone intégré avec réduction de bruit ambiant.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-icon">🤝</div>
+        <div class="feat-card-title">Paiement Zen</div>
+        <div class="feat-card-desc">Paiement après vérification du produit. Risque 0.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section">
+    <div class="section-tag">Fiche technique</div>
+    <h2 class="section-h2">Spécifications <em>Techniques</em></h2>
+    <table class="specs-table" style="margin-top:24px;">
+      <tr><td>Modèle</td><td>VV4 Air Conduction</td></tr>
+      <tr><td>Version Bluetooth</td><td>V5.3 (Faible consommation)</td></tr>
+      <tr><td>Matériau</td><td>Alliage de Titane Flexible</td></tr>
+      <tr><td>Poids</td><td>26 grammes</td></tr>
+      <tr><td>Batterie</td><td>150 mAh</td></tr>
+      <tr><td>Autonomie Écoute</td><td>7 à 8 heures</td></tr>
+      <tr><td>Temps de charge</td><td>1.5 Heures</td></tr>
+      <tr><td>Étanchéité</td><td>IPX5 (Sueur & Pluie)</td></tr>
+      <tr><td>Prix Spécial</td><td style="color:var(--red); font-size:20px; font-weight:800;">29$ <span style="font-size:14px; color:#aaa; text-decoration:line-through;">50$</span></td></tr>
+    </table>
+    <button class="cta-wa" onclick="focusForm()" style="margin-top:28px;">PROFITER DE L'OFFRE — 29$</button>
+  </div>
+</section>
+
+<section class="section-bg">
+  <div class="section">
+    <div class="section-tag">Avis clients</div>
+    <h2 class="section-h2">Ce qu'ils en<br><em>disent à Lubum</em></h2>
+    <div class="reviews-grid" style="margin-top:28px;">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Je les utilise pour mes joggings à Lubumbashi. Enfin des écouteurs qui ne tombent pas et me permettent d'entendre le danger autour de moi. »</p>
+        <div class="review-author"><div class="review-avatar">JK</div><div><div class="review-name">Jean K.</div><div class="review-loc">📍 Lubum</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Livraison très rapide. Le son est propre et je n'ai plus mal aux oreilles après le travail. »</p>
+        <div class="review-author"><div class="review-avatar">SM</div><div><div class="review-name">Sarah M.</div><div class="review-loc">📍 Kolwezi</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="max-width: 800px; margin: 40px auto; padding: 20px; font-family: 'Inter', sans-serif;">
+    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 800; color: #111;">Questions Fréquentes</h2>
+
+    <div style="border-top: 2px solid #E9ECEF;">
+        
+        <details style="padding: 20px 0; border-bottom: 1px solid #E9ECEF; cursor: pointer;">
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; color: #111;">
+                Comment se passe la livraison à Lubumbashi ?
+                <span style="color: #25D366; font-size: 1.5em;">+</span>
+            </summary>
+            <p style="margin-top: 15px; color: #495057; line-height: 1.6; border-left: 3px solid #E62B2B; padding-left: 15px;">
+                Nous livrons rapidement partout à Lubumbashi. Une fois votre commande validée, notre service logistique vous contacte pour confirmer le lieu exact de remise. Vous ne payez qu'à la livraison pour une sécurité totale.
+            </p>
+        </details>
+
+        <details style="padding: 20px 0; border-bottom: 1px solid #E9ECEF; cursor: pointer;">
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; color: #111;">
+                La technologie "Air Conduction", c'est quoi ?
+                <span style="color: #25D366; font-size: 1.5em;">+</span>
+            </summary>
+            <p style="margin-top: 15px; color: #495057; line-height: 1.6; border-left: 3px solid #E62B2B; padding-left: 15px;">
+                C'est une innovation qui diffuse le son directement vers votre oreille sans boucher le conduit auditif. Vous profitez d'un son **Subwoofer** de haute qualité tout en restant conscient de votre environnement (voitures, appels, etc.).
+            </p>
+        </details>
+
+        <details style="padding: 20px 0; border-bottom: 1px solid #E9ECEF; cursor: pointer;">
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; color: #111;">
+                Quelle est l'autonomie réelle de la batterie ?
+                <span style="color: #25D366; font-size: 1.5em;">+</span>
+            </summary>
+            <p style="margin-top: 15px; color: #495057; line-height: 1.6; border-left: 3px solid #E62B2B; padding-left: 15px;">
+                Le modèle VV4 offre jusqu'à **8 heures d'écoute continue** avec une seule charge. Parfait pour vos séances de sport intenses ou vos longs trajets sans craindre la coupure.
+            </p>
+        </details>
+
+        <details style="padding: 20px 0; border-bottom: 1px solid #E9ECEF; cursor: pointer;">
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; color: #111;">
+                Est-ce qu'ils tiennent bien pendant le sport ?
+                <span style="color: #25D366; font-size: 1.5em;">+</span>
+            </summary>
+            <p style="margin-top: 15px; color: #495057; line-height: 1.6; border-left: 3px solid #E62B2B; padding-left: 15px;">
+                Oui, leur structure ergonomique suspendue est conçue pour ne pas bouger, même en courant. Avec seulement **15g**, ils sont si légers que vous oublierez que vous les portez.
+            </p>
+        </details>
+
+        <details style="padding: 20px 0; border-bottom: 1px solid #E9ECEF; cursor: pointer;">
+            <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; color: #111;">
+                Que faire si je rencontre un problème technique ?
+                <span style="color: #25D366; font-size: 1.5em;">+</span>
+            </summary>
+            <p style="margin-top: 15px; color: #495057; line-height: 1.6; border-left: 3px solid #E62B2B; padding-left: 15px;">
+                Chez Nekudu Shop, nous garantissons la qualité "Official Certified". En cas de défaut de fabrication, nous procédons à un échange standard sous 48h. Votre satisfaction est notre priorité.
+            </p>
+        </details>
+
+    </div>
+</section>
+
+<section class="section-dark">
+  <div class="section">
+    <div class="section-tag">Risque zéro</div>
+    <h2 class="section-h2" style="color:#fff;">Votre achat est <em style="color:var(--orange);">sécurisé</em></h2>
+    <div class="guarantee-grid">
+      <div class="guarantee-card"><div class="g-icon">✅</div><div class="g-title">Test avant paiement</div></div>
+      <div class="guarantee-card"><div class="g-icon">💵</div><div class="g-title">Cash à la livraison</div></div>
+      <div class="guarantee-card"><div class="g-icon">🚚</div><div class="g-title">Livraison gratuite</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Nekudu<span>.</span>Shop</div>
+  <div>VV4 Air Conduction · 2026 · Lubumbashi 🇨🇩</div>
+  <div>Paiement à la livraison · Service Client : +243 841 349 105</div>
+</footer>
+
+<div class="sticky-bottom" id="sticky-bar">
+  <div class="sticky-product">
+    <div class="sticky-thumb"><img src="1776329242752.png"></div>
+    <div><div class="sticky-name">VV4 Air Conduction</div><div class="sticky-price">29$ · Stock Limité</div></div>
+  </div>
+  <button class="sticky-cta" onclick="focusForm()">Commander →</button>
+</div>
+
+<script>
+const WA_NUMBER = '243841349105';
+
+function switchImg(thumb, src) {
+  document.querySelectorAll('.hero-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+  document.getElementById('main-img-el').src = src;
+}
+
+function focusForm() {
+  document.getElementById('commander').scrollIntoView({ behavior: 'smooth' });
+}
+
+let selOffer = 1, selPrice = '29$';
+function selectOffer(btn, n, price) {
+  selOffer = n; selPrice = price;
+  document.querySelectorAll('.offer-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function sendOrder() {
+  const nom = document.getElementById('f-nom').value;
+  const phone = document.getElementById('f-phone').value;
+  const ville = document.getElementById('f-ville').value;
+  const note = document.getElementById('f-note').value;
+
+  if(!nom || !phone || !ville) { alert('Remplis les champs obligatoires'); return; }
+
+  const msg = `Bonjour Nekudu Shop ! 👋\n\n🛒 COMMANDE VV4 :\n🎧 ${selOffer} paire(s) — ${selPrice}\n\n👤 Infos :\n• Nom : ${nom}\n• Ville : ${ville}\n• Note : ${note}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  
+  document.getElementById('quick-form').style.display = 'none';
+  document.getElementById('confirm-box').classList.add('show');
+}
+
+function resetForm() {
+  document.getElementById('quick-form').style.display = 'block';
+  document.getElementById('confirm-box').classList.remove('show');
+}
+</script>
+
+</body>
+</html>
